@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Detail {% endblock %}
+
+{% block content %}
+
+<i><h4>{{object.site_name}} 상세정보 </h4></i>
+<table class="table">
+   <thead class="thead-dark">
+         <tr>
+                 <th scope = "col">Site</th>
+                 <th scope = "col">URL</th>
+                 <th scope = "col">Modify</th>
+                 <th scope = "col">Delete</th>
+
+        </tr>
+  </thead>
+   <tbody>
+      <tr>
+            <td><b><mark>{{object.site_name}}</mark></b></td>
+            <td><b><mark>{{object.url}}</mark></b></td>
+            <td><a href="{% url 'bookmark:update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
+            <td><a href="{% url 'bookmark:delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+      </tr>
+   </tbody>
+
+</table>
+
+{% endblock %}

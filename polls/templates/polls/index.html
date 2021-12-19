@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} 정은하 설문조사 {% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type = "text/css" href="{% static 'polls/style.css' %}">
+
+{% if latest_question_list %}
+
+    <ul>
+ {% for question in latest_question_list %}
+        <div class="shadow-none p-3 mb-5 bg-light rounded">
+        <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li>
+        </div>
+    {% endfor %}
+    </ul>
+
+ {% else %}
+    <p>No polls are available.</p>
+ {% endif %}
+ <p><a href="#" class="btn btn-info">투표 결과</a></p>
+{% endblock %}
